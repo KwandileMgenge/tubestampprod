@@ -1,0 +1,26 @@
+.bump-ups {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.bump-ups h2 {
+  margin: 0 0 1rem;
+  color: #1f2d5c;
+}
+
+.bump-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.bump-item {
+  background-color: #eef3ff;
+  border-radius: 8px;
+  padding: 0.85rem;
+  text-align: center;
+  color: #2d3d6f;
+  font-weight: 600;
+}
