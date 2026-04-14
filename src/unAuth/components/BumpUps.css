@@ -1,0 +1,147 @@
+.domore {
+  background-color: var(--panel);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--surface-border);
+  padding: 1.6rem 1.2rem;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+}
+
+.domore__top {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.domore__top h2 {
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.domore__brand {
+  color: var(--brand);
+}
+
+.domore__top p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.domore__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.domore__card {
+  background-color: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: 18px 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 108px;
+  gap: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s;
+}
+
+.domore__card:hover {
+  background-color: rgba(78, 143, 255, 0.16);
+  border-color: rgba(78, 143, 255, 0.48);
+}
+
+.domore__card-left {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  text-align: center;
+}
+
+.domore__badge {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(78, 143, 255, 0.2);
+  color: var(--text-main);
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 11px;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+.domore__learn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.domore__learn:hover {
+  color: var(--text-main);
+}
+
+.domore__icon {
+  width: 50px;
+  height: 50px;
+  background-color: var(--panel-soft);
+  border: 1px solid var(--surface-border);
+  color: var(--text-main);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 720px) {
+  .domore {
+    padding: 1.2rem 0.9rem;
+  }
+
+  .domore__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .domore__card {
+    padding: 14px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .domore__top h2 {
+    font-size: 1.2rem;
+  }
+
+  .domore__top p {
+    font-size: 0.9rem;
+  }
+
+  .domore__card {
+    min-height: auto;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .domore__icon {
+    width: 44px;
+    height: 44px;
+  }
+}
