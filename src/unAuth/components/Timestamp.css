@@ -46,7 +46,7 @@
 .timestamp__input {
   width: 100%;
   flex: 1;
-  min-width: 300px;
+  min-width: 0;
   padding: 0.9rem 1rem;
   border-radius: 10px;
   border: 1px solid var(--surface-border);
@@ -146,5 +146,28 @@
 
   .timestamp {
     padding: 1.35rem 0.9rem;
+  }
+
+  .timestamp h2 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .timestamp {
+    padding: 1.05rem 0.7rem;
+  }
+
+  .timestamp__input {
+    padding: 0.8rem 0.85rem;
+    font-size: 0.95rem;
+  }
+
+  .timestamp__button {
+    padding: 0.8rem 0.9rem;
+  }
+
+  .timestamp__video-title {
+    font-size: 0.94rem;
   }
 }

@@ -8,7 +8,14 @@ const NavBar = () => {
         TubeStamp
       </div>
       <div className="nav-actions">
-        <button className="nav-btn-cta" type="button">Do More With Video →</button>
+        <a
+          className="nav-btn-cta"
+          href="https://bumpups.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Do More With Video →
+        </a>
       </div>
     </header>
   );

@@ -116,9 +116,44 @@
     padding: 1.35rem;
   }
 
+  .footer-top {
+    gap: 1.25rem;
+  }
+
   .footer-links-grid {
     width: 100%;
     grid-template-columns: 1fr 1fr;
     gap: 1.3rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer-card {
+    padding: 1rem 0.85rem;
+  }
+
+  .footer-brand {
+    font-size: 1.12rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.9rem;
+  }
+
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .footer-bottom {
+    margin-top: 1.2rem;
+    padding-top: 0.85rem;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }

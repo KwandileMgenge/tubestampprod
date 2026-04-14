@@ -32,6 +32,12 @@ body {
   background-attachment: fixed;
 }
 
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
 #root {
   min-height: 100vh;
 }
