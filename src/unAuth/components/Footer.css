@@ -1,10 +1,123 @@
-.footer {
-  text-align: center;
-  color: #5b6a92;
-  padding: 0.5rem 0 0;
+.footer-shell {
+  margin-top: 2rem;
+  padding: 0 1rem 1.25rem;
 }
 
-.footer p {
-  margin: 0;
+.footer-card {
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #0f1b3d;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 2rem;
+  color: #ffffff;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.25rem;
+  flex-wrap: wrap;
+}
+
+.footer-brand-block {
+  max-width: 360px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.footer-brand-icon {
+  color: #4e8fff;
+}
+
+.footer-tagline {
+  margin: 0.85rem 0 0;
+  color: #ccd6f0;
   font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 2rem;
+}
+
+.footer-links-grid h3 {
+  margin: 0 0 0.8rem;
+  font-size: 0.73rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.footer-links-grid a {
+  display: block;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  font-size: 0.93rem;
+  color: #ccd6f0;
+  border-radius: 6px;
+  transition: color 0.15s ease;
+}
+
+.footer-links-grid a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  margin-top: 1.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.82rem;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+.footer-socials a {
+  color: #ccd6f0;
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.footer-socials a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.58);
+}
+
+@media (max-width: 760px) {
+  .footer-card {
+    padding: 1.35rem;
+  }
+
+  .footer-links-grid {
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.3rem;
+  }
 }
