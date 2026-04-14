@@ -7,10 +7,6 @@ const NavBar = () => {
         <span className="nav-logo-icon">✦</span>
         TubeStamp
       </div>
-      <nav className="nav-links">
-        <a href="#features">Features <span className="nav-chevron">▾</span></a>
-        <a href="#pricing">Pricing <span className="nav-chevron">▾</span></a>
-      </nav>
       <div className="nav-actions">
         <button className="nav-btn-cta" type="button">Do More With Video →</button>
       </div>
