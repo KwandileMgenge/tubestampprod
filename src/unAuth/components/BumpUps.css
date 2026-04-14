@@ -1,8 +1,9 @@
 .domore {
-  background-color: #0f1b3d;
-  border-radius: 12px;
+  background-color: var(--panel);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--surface-border);
   padding: 1.6rem;
-  box-shadow: 0 10px 28px rgba(15, 27, 61, 0.22);
+  box-shadow: var(--shadow-lg);
   text-align: center;
 }
 
@@ -16,19 +17,19 @@
 }
 
 .domore__top h2 {
-  font-size: 15px;
+  font-size: 1.45rem;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--text-main);
   margin-bottom: 6px;
 }
 
 .domore__brand {
-  color: #4e8fff;
+  color: var(--brand);
 }
 
 .domore__top p {
-  font-size: 12.5px;
-  color: #ccd6f0;
+  font-size: 0.95rem;
+  color: var(--text-muted);
   line-height: 1.6;
   max-width: 540px;
   margin: 0 auto;
@@ -43,9 +44,9 @@
 }
 
 .domore__card {
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
+  background-color: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
   padding: 18px 16px 16px;
   display: flex;
   align-items: center;
@@ -56,8 +57,8 @@
 }
 
 .domore__card:hover {
-  background-color: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(78, 143, 255, 0.16);
+  border-color: rgba(78, 143, 255, 0.48);
 }
 
 .domore__card-left {
@@ -71,8 +72,8 @@
 .domore__badge {
   display: inline-flex;
   align-items: center;
-  background-color: #4e8fff;
-  color: #ffffff;
+  background-color: rgba(78, 143, 255, 0.2);
+  color: var(--text-main);
   font-size: 11.5px;
   font-weight: 600;
   padding: 4px 11px;
@@ -86,21 +87,21 @@
   justify-content: center;
   gap: 5px;
   font-size: 12px;
-  color: #ccd6f0;
+  color: var(--text-muted);
   text-decoration: none;
   transition: color 0.15s;
 }
 
 .domore__learn:hover {
-  color: #ffffff;
+  color: var(--text-main);
 }
 
 .domore__icon {
   width: 50px;
   height: 50px;
-  background-color: rgba(15, 27, 61, 0.85);
-  border: 1.5px solid rgba(255, 255, 255, 0.25);
-  color: #ffffff;
+  background-color: var(--panel-soft);
+  border: 1px solid var(--surface-border);
+  color: var(--text-main);
   border-radius: 8px;
   display: flex;
   align-items: center;

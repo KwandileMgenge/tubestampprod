@@ -1,16 +1,17 @@
 .footer-shell {
-  margin-top: 2rem;
-  padding: 0 1rem 1.25rem;
+  margin-top: 1rem;
+  padding: 0;
 }
 
 .footer-card {
-  max-width: 1100px;
+  max-width: none;
   margin: 0 auto;
-  background-color: #0f1b3d;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
+  background-color: var(--panel);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
   padding: 2rem;
-  color: #ffffff;
+  color: var(--text-main);
+  box-shadow: var(--shadow-lg);
 }
 
 .footer-top {
@@ -33,12 +34,12 @@
 }
 
 .footer-brand-icon {
-  color: #4e8fff;
+  color: var(--brand);
 }
 
 .footer-tagline {
   margin: 0.85rem 0 0;
-  color: #ccd6f0;
+  color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.55;
 }
@@ -54,7 +55,7 @@
   font-size: 0.73rem;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(204, 214, 240, 0.8);
 }
 
 .footer-links-grid a {
@@ -62,19 +63,19 @@
   margin-bottom: 0.5rem;
   text-decoration: none;
   font-size: 0.93rem;
-  color: #ccd6f0;
+  color: var(--text-muted);
   border-radius: 6px;
   transition: color 0.15s ease;
 }
 
 .footer-links-grid a:hover {
-  color: #ffffff;
+  color: var(--text-main);
 }
 
 .footer-bottom {
   margin-top: 1.8rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid var(--surface-border);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -84,7 +85,7 @@
 
 .footer-bottom p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(204, 214, 240, 0.8);
   font-size: 0.82rem;
 }
 
@@ -95,19 +96,19 @@
 }
 
 .footer-socials a {
-  color: #ccd6f0;
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 0.85rem;
   padding: 0.3rem 0.55rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--surface-border);
   border-radius: 999px;
   transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
 }
 
 .footer-socials a:hover {
-  color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.58);
+  color: var(--text-main);
+  background-color: rgba(78, 143, 255, 0.18);
+  border-color: rgba(78, 143, 255, 0.48);
 }
 
 @media (max-width: 760px) {
