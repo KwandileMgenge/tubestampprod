@@ -3,15 +3,17 @@ import "./NavBar.css";
 const NavBar = () => {
   return (
     <header className="nav-bar">
-      <div className="nav-brand">TubeStamp</div>
+      <div className="nav-brand">
+        <span className="nav-logo-icon">✦</span>
+        TubeStamp
+      </div>
       <nav className="nav-links">
-        <a href="#features">Features</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#contact">Contact</a>
+        <a href="#features">Features <span className="nav-chevron">▾</span></a>
+        <a href="#pricing">Pricing <span className="nav-chevron">▾</span></a>
       </nav>
-      <button className="nav-btn" type="button">
-        Get Started
-      </button>
+      <div className="nav-actions">
+        <button className="nav-btn-cta" type="button">Do More With Video →</button>
+      </div>
     </header>
   );
 };
