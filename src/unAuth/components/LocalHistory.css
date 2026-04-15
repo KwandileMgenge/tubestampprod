@@ -1,0 +1,102 @@
+.history {
+    margin-top: 2rem;
+    padding: 1.5rem 1.25rem;
+    background-color: var(--panel);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--surface-border);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .history__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+  
+  .history__title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+  
+  .history__clear-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+  
+  .history__clear-btn:hover {
+    color: #ef4444; /* Soft red for danger actions */
+  }
+  
+  .history__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.25rem;
+  }
+  
+  .history__card {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .history__card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .history__thumbnail-wrapper {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--surface-border);
+  }
+  
+  .history__thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .history__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(78, 143, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  
+  .history__card:hover .history__overlay {
+    opacity: 1;
+  }
+  
+  .history__video-title {
+    margin: 0.6rem 0 0;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    color: var(--text-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: left;
+  }
+  
+  @media (max-width: 640px) {
+    .history__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+  }
