@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { connectFunctionsEmulator, getFunctions } from "firebase/functions";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,3 +20,13 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const functions = getFunctions(app);
+const useFunctionsEmulator = import.meta.env.VITE_USE_FUNCTIONS_EMULATOR === "true";
+const functionsEmulatorHost = import.meta.env.VITE_FUNCTIONS_EMULATOR_HOST || "127.0.0.1";
+const functionsEmulatorPort = Number(import.meta.env.VITE_FUNCTIONS_EMULATOR_PORT || 5001);
+
+if (window.location.hostname === "localhost" && useFunctionsEmulator) {
+  connectFunctionsEmulator(functions, functionsEmulatorHost, functionsEmulatorPort);
+}
+
+export { app, analytics, functions };
