@@ -21,9 +21,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const functions = getFunctions(app);
+const useFunctionsEmulator = import.meta.env.VITE_USE_FUNCTIONS_EMULATOR === "true";
+const functionsEmulatorHost = import.meta.env.VITE_FUNCTIONS_EMULATOR_HOST || "127.0.0.1";
+const functionsEmulatorPort = Number(import.meta.env.VITE_FUNCTIONS_EMULATOR_PORT || 5001);
 
-if (window.location.hostname === "localhost") {
-  connectFunctionsEmulator(functions, "127.0.0.1", 5001);
+if (window.location.hostname === "localhost" && useFunctionsEmulator) {
+  connectFunctionsEmulator(functions, functionsEmulatorHost, functionsEmulatorPort);
 }
 
 export { app, analytics, functions };
