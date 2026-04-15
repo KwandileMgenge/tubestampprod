@@ -134,6 +134,17 @@
   color: var(--text-main);
 }
 
+.timestamp__duration {
+  margin: 0.4rem 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background-color: rgba(78, 143, 255, 0.12);
+  border-radius: 6px;
+  border: 1px solid rgba(78, 143, 255, 0.25);
+}
+
 .timestamp__preview .timestamp__button {
   margin-top: 0.75rem;
 }

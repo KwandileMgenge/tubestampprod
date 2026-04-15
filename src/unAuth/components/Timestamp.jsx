@@ -16,6 +16,18 @@ function timestampsCopyText(data) {
   return "";
 }
 
+/** Convert ISO 8601 duration to minutes. */
+function isoDurationToMinutes(duration) {
+  if (!duration || typeof duration !== "string") return 0;
+  const regex = /PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/;
+  const matches = duration.match(regex);
+  if (!matches) return 0;
+  const hours = parseInt(matches[1] || 0, 10);
+  const minutes = parseInt(matches[2] || 0, 10);
+  const seconds = parseInt(matches[3] || 0, 10);
+  return hours * 60 + minutes + (seconds > 0 ? 1 : 0); // Round up partial minutes
+}
+
 const Timestamp = () => {
   const [url, setUrl] = useState("");
   const [touched, setTouched] = useState(false);
@@ -73,7 +85,7 @@ const Timestamp = () => {
       setLoading(true);
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 10000); // 10 second timeout
-      const endpoint = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${youtubeApiKey}`;
+      const endpoint = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=${videoId}&key=${youtubeApiKey}`;
       const response = await fetch(endpoint, { signal: controller.signal });
       clearTimeout(timeout);
       const data = await response.json();
@@ -82,18 +94,28 @@ const Timestamp = () => {
         throw new Error(data?.error?.message || "Failed to fetch video details.");
       }
 
-      const snippet = data?.items?.[0]?.snippet;
-      if (!snippet) {
+      const video = data?.items?.[0];
+      if (!video?.snippet) {
         setVideoData(null);
         setTimestampsPayload(null);
         setApiError("No video found for this URL.");
         return;
       }
 
+      // Check video duration (max 30 minutes to limit API credit spending)
+      const durationMinutes = isoDurationToMinutes(video.contentDetails?.duration);
+      if (durationMinutes > 30) {
+        setVideoData(null);
+        setTimestampsPayload(null);
+        setApiError(`Video is ${durationMinutes} minutes long. Maximum length is 30 minutes to limit API costs.`);
+        return;
+      }
+
       setTimestampsPayload(null);
       setVideoData({
-        title: snippet.title,
-        thumbnail: getBestThumbnail(snippet.thumbnails),
+        title: video.snippet.title,
+        thumbnail: getBestThumbnail(video.snippet.thumbnails),
+        duration: durationMinutes,
       });
     } catch (error) {
       setVideoData(null);
@@ -134,6 +156,7 @@ const Timestamp = () => {
           url: url.trim(),
           title: videoData.title,
           thumbnail: videoData.thumbnail,
+          duration: videoData.duration,
           payload: payload,
           timestamp: new Date().toISOString(),
         };
@@ -168,7 +191,7 @@ const Timestamp = () => {
 
   const handleSelectFromHistory = (item) => {
     setUrl(item.url);
-    setVideoData({ title: item.title, thumbnail: item.thumbnail });
+    setVideoData({ title: item.title, thumbnail: item.thumbnail, duration: item.duration });
     setTimestampsPayload(item.payload);
     // Smooth scroll back to top if needed
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -229,6 +252,11 @@ const Timestamp = () => {
             />
           ) : null}
           <h3 className="timestamp__video-title">{videoData.title}</h3>
+          {videoData.duration && (
+            <p className="timestamp__duration">
+              Duration: {videoData.duration} minute{videoData.duration !== 1 ? 's' : ''} ✓
+            </p>
+          )}
           <button
             className="timestamp__button"
             type="button"
