@@ -1,7 +1,8 @@
 import "./Timestamp.css";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { httpsCallable } from "firebase/functions";
 import { functions } from "../../firebase";
+import LocalHistory from "./LocalHistory";
 
 /** Normalize callable payload for display and clipboard. */
 function timestampsCopyText(data) {
@@ -70,8 +71,11 @@ const Timestamp = () => {
 
     try {
       setLoading(true);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000); // 10 second timeout
       const endpoint = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${youtubeApiKey}`;
-      const response = await fetch(endpoint);
+      const response = await fetch(endpoint, { signal: controller.signal });
+      clearTimeout(timeout);
       const data = await response.json();
 
       if (!response.ok) {
@@ -100,21 +104,51 @@ const Timestamp = () => {
     }
   };
 
+  // Reset copy button label after 2 seconds
+  useEffect(() => {
+    if (copyLabel !== "Copy") {
+      const timer = setTimeout(() => setCopyLabel("Copy"), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [copyLabel]);
+
   const handleGenerateTimestamps = async () => {
     setApiError("");
     if (!videoData || !isValid) {
       setApiError("Load a valid video preview first.");
       return;
     }
-
+  
     try {
       setGenerating(true);
-      setTimestampsPayload(null);
       const generateTimestamps = httpsCallable(functions, "generate_timestamps");
       const result = await generateTimestamps({ url: url.trim() });
-      setTimestampsPayload(result.data ?? null);
+      const payload = result.data ?? null;
+  
+      if (payload) {
+        setTimestampsPayload(payload);
+  
+        // --- NEW: Save to localStorage ---
+        const historyItem = {
+          id: extractVideoId(url),
+          url: url.trim(),
+          title: videoData.title,
+          thumbnail: videoData.thumbnail,
+          payload: payload,
+          timestamp: new Date().toISOString(),
+        };
+  
+        const existingHistory = JSON.parse(localStorage.getItem("yt_history") || "[]");
+        
+        // Prevent duplicates: Remove old entry for this video if it exists
+        const filteredHistory = existingHistory.filter(item => item.id !== historyItem.id);
+        
+        // Add new item to the start of the array
+        const newHistory = [historyItem, ...filteredHistory].slice(0, 10); // Keep last 10
+        localStorage.setItem("yt_history", JSON.stringify(newHistory));
+        // ---------------------------------
+      }
     } catch (error) {
-      setTimestampsPayload(null);
       setApiError(error?.message || "Failed to generate timestamps.");
     } finally {
       setGenerating(false);
@@ -127,11 +161,17 @@ const Timestamp = () => {
     try {
       await navigator.clipboard.writeText(text);
       setCopyLabel("Copied!");
-      window.setTimeout(() => setCopyLabel("Copy"), 2000);
     } catch {
       setCopyLabel("Copy failed");
-      window.setTimeout(() => setCopyLabel("Copy"), 2000);
     }
+  };
+
+  const handleSelectFromHistory = (item) => {
+    setUrl(item.url);
+    setVideoData({ title: item.title, thumbnail: item.thumbnail });
+    setTimestampsPayload(item.payload);
+    // Smooth scroll back to top if needed
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const timestampLines = Array.isArray(timestampsPayload?.timestamps_list)
@@ -231,6 +271,7 @@ const Timestamp = () => {
           )}
         </article>
       )}
+      <LocalHistory onSelectVideo={handleSelectFromHistory} />
     </section>
   );
 };

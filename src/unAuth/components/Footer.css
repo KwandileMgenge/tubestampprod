@@ -1,9 +1,9 @@
-.footer-shell {
+.footer {
   margin-top: 1rem;
   padding: 0;
 }
 
-.footer-card {
+.footer__card {
   max-width: none;
   margin: 0 auto;
   background-color: var(--panel);
@@ -14,18 +14,18 @@
   box-shadow: var(--shadow-lg);
 }
 
-.footer-top {
+.footer__top {
   display: flex;
   justify-content: space-between;
   gap: 2.25rem;
   flex-wrap: wrap;
 }
 
-.footer-brand-block {
+.footer__brand-block {
   max-width: 360px;
 }
 
-.footer-brand {
+.footer__brand {
   display: flex;
   align-items: center;
   gap: 0.45rem;
@@ -33,24 +33,24 @@
   font-weight: 700;
 }
 
-.footer-brand-icon {
+.footer__brand-icon {
   color: var(--brand);
 }
 
-.footer-tagline {
+.footer__tagline {
   margin: 0.85rem 0 0;
   color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.55;
 }
 
-.footer-links-grid {
+.footer__links-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(120px, 1fr));
   gap: 2rem;
 }
 
-.footer-links-grid h3 {
+.footer__links-grid h3 {
   margin: 0 0 0.8rem;
   font-size: 0.73rem;
   font-weight: 600;
@@ -58,7 +58,7 @@
   color: rgba(204, 214, 240, 0.8);
 }
 
-.footer-links-grid a {
+.footer__links-grid a {
   display: block;
   margin-bottom: 0.5rem;
   text-decoration: none;
@@ -68,11 +68,11 @@
   transition: color 0.15s ease;
 }
 
-.footer-links-grid a:hover {
+.footer__links-grid a:hover {
   color: var(--text-main);
 }
 
-.footer-bottom {
+.footer__bottom {
   margin-top: 1.8rem;
   padding-top: 1rem;
   border-top: 1px solid var(--surface-border);
@@ -83,19 +83,19 @@
   flex-wrap: wrap;
 }
 
-.footer-bottom p {
+.footer__bottom p {
   margin: 0;
   color: rgba(204, 214, 240, 0.8);
   font-size: 0.82rem;
 }
 
-.footer-socials {
+.footer__socials {
   display: flex;
   align-items: center;
   gap: 0.95rem;
 }
 
-.footer-socials a {
+.footer__socials a {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.85rem;

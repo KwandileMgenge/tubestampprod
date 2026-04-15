@@ -1,22 +1,21 @@
-import React from "react";
 import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer-shell">
-      <div className="footer-card">
-        <div className="footer-top">
-          <div className="footer-brand-block">
-            <div className="footer-brand">
-              <span className="footer-brand-icon">✦</span>
-              <span className="footer-brand-name">TubeStamp</span>
+    <footer className="footer">
+      <div className="footer__card">
+        <div className="footer__top">
+          <div className="footer__brand-block">
+            <div className="footer__brand">
+              <span className="footer__brand-icon">✦</span>
+              <span className="footer__brand-name">TubeStamp</span>
             </div>
-            <p className="footer-tagline">
+            <p className="footer__tagline">
               Turn your videos into clean timestamps, quick summaries, and better publishing workflows.
             </p>
           </div>
 
-          <div className="footer-links-grid">
+          <div className="footer__links-grid">
             <div>
               <h3>PRODUCT</h3>
               <a href="#features">Features</a>
@@ -38,9 +37,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="footer-bottom">
+        <div className="footer__bottom">
           <p>© {new Date().getFullYear()} TubeStamp. All rights reserved.</p>
-          <div className="footer-socials">
+          <div className="footer__socials">
             <a href="#" aria-label="Twitter">
               Twitter
             </a>
