@@ -6,8 +6,8 @@ import Footer from "./Footer";
 
 const LandingPage = () => {
   return (
-    <main className="landing-page">
-      <div className="landing-container">
+    <main className="landing">
+      <div className="landing__container">
         <NavBar />
         <Timestamp />
         <BumpUps />

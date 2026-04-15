@@ -1,5 +1,5 @@
 import "./Timestamp.css";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { httpsCallable } from "firebase/functions";
 import { functions } from "../../firebase";
 import LocalHistory from "./LocalHistory";
@@ -71,8 +71,11 @@ const Timestamp = () => {
 
     try {
       setLoading(true);
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000); // 10 second timeout
       const endpoint = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${youtubeApiKey}`;
-      const response = await fetch(endpoint);
+      const response = await fetch(endpoint, { signal: controller.signal });
+      clearTimeout(timeout);
       const data = await response.json();
 
       if (!response.ok) {
@@ -100,6 +103,14 @@ const Timestamp = () => {
       setLoading(false);
     }
   };
+
+  // Reset copy button label after 2 seconds
+  useEffect(() => {
+    if (copyLabel !== "Copy") {
+      const timer = setTimeout(() => setCopyLabel("Copy"), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [copyLabel]);
 
   const handleGenerateTimestamps = async () => {
     setApiError("");
@@ -150,10 +161,8 @@ const Timestamp = () => {
     try {
       await navigator.clipboard.writeText(text);
       setCopyLabel("Copied!");
-      window.setTimeout(() => setCopyLabel("Copy"), 2000);
     } catch {
       setCopyLabel("Copy failed");
-      window.setTimeout(() => setCopyLabel("Copy"), 2000);
     }
   };
 

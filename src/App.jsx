@@ -5,7 +5,7 @@ import "./firebase";
 
 function App() {
   return (
-    <div className="app-shell">
+    <div className="app__shell">
       <LandingPage />
     </div>
   );

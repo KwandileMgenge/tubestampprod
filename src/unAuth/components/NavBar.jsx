@@ -2,14 +2,14 @@ import "./NavBar.css";
 
 const NavBar = () => {
   return (
-    <header className="nav-bar">
-      <div className="nav-brand">
-        <span className="nav-logo-icon">✦</span>
+    <header className="navbar">
+      <div className="navbar__brand">
+        <span className="navbar__logo-icon">✦</span>
         TubeStamp
       </div>
-      <div className="nav-actions">
+      <div className="navbar__actions">
         <a
-          className="nav-btn-cta"
+          className="navbar__cta"
           href="https://bumpups.com"
           target="_blank"
           rel="noopener noreferrer"

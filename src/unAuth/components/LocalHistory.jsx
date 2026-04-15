@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import "./LocalHistory.css";
 
 const LocalHistory = ({ onSelectVideo }) => {
@@ -43,6 +44,10 @@ const LocalHistory = ({ onSelectVideo }) => {
       </div>
     </section>
   );
+};
+
+LocalHistory.propTypes = {
+  onSelectVideo: PropTypes.func.isRequired,
 };
 
 export default LocalHistory;
